@@ -1,6 +1,6 @@
 {
   "name": "react-phocus",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A wrapper for using Phocus with react.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,7 +33,7 @@
     "phocus": "^1.0.2"
   },
   "peerDependencies": {
-    "react": "^16.5.3"
+    "react": "^16.5.0"
   },
   "devDependencies": {
     "@types/jest": "^23.3.2",
