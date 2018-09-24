@@ -1,47 +1,26 @@
 # Phocus: focus and action management, with context-sensitive hotkeys
 
+This is a react wrapper for the [Phocus](https://github.com/diiq/phocus) library.
+
 Phocus helps you make your apps accessible and power-user-friendly by managing context-sensitive actions. Hotkeys and buttons are tied to the same root action definition, so they're guaranteed to do the same thing.
 
 Phocus lets your users set, change, and unset keyboard shortcuts for all manner of actions in your app, and those shortcuts can be context-dependent, based on what object has focus.
 
 ## Example usage
 
-See [Phocus Example](https://diiq.github.io/phocus-example/) for an absolutely stripped-down example of phocus making a todo.
+See [React-Phocus Example](https://diiq.github.io/react-phocus-example/) for an absolutely stripped-down example of phocus making a todo.
 
 See [Vistimo](https://www.vistimo.com) for a rich and complicated use-case.
 
 ## Installing
 
-`yarn add phocus` or `npm install phocus`.
+`yarn add react-phocus` or `npm install react-phocus`.
 
 Phocus comes with typescript typings; no need to install them separately.
 
-## Philosophy
-
-The Rules of Phocus:
-
-1. Any element that allows the user to take an action can be focused.
-2. Only one element can be focused at a time.
-3. Focus moves between elements using the mouse, keyboard, or programmatically
-   - Some elements focus on click; some on hover.
-4. Some states only allow focus among a subset of all focusable elements (modals, menus)
-   - This subset is always contained in exactly one branch of the element tree
-5. An element can allow a user to trigger a single context-sensitive action by clicking, or hitting enter when focused. (Some drop-downs trigger on Space for a11y reasons.)
-   - Context sensitivity allows the action to be separated from the actee: e.g. the action is ‘delete’, but context is required to know it means ‘delete item X’
-6. An user can trigger a variety of actions using keyboard shortcuts;
-   - Keyboard shortcuts depend on what element is in focus (and its parents) when the key is pressed.
-7. Every action a user can take should be documented. Every hotkey should be rebindable.
-
-Types of interactive elements:
-
-- Buttons (Focusable, triggers action in context)
-- Links (Focusable, triggers change in URL)
-- Inputs (focusable; not triggerable by clicking)
-- Contexts (not focusable by default, defines a set of actions; such as a form, submittable with ‘enter’ when any child is in focus)
-
-All remaining elements are ignored as non-focusable, non-interactive, non-contexts. (Phocus ignores, but does not prevent, interactions such as drag-and-drop).
-
 ## Usage
+
+Usage is much the same as Phocus.
 
 ### `ActionContextSevice` and `Action`
 
@@ -94,25 +73,23 @@ ActionContextService.addContext("feature-thumbnail", {
 });
 ```
 
-### Markup
+### PhocusContext and PhocusButton
 
-In your markup, use attributes to tie your context to the DOM.
-
-`data-phocus-context-argument` defines the first argument that will be passed to any action called within the context; in this case, the actions are all expecting an id string.
+Rather than using the `data-phocus-` attributes to connect contexts and actions to the DOM, use these two react components:
 
 ```
-<div data-phocus-context-name="feature-thumbnail" data-phocus-context-argument="123">
-  <button data-phocus-action="showBugs"></button>
+<PhocusContext context="feature-thumbnail" argument={123}>
+  <PhocusButton action="showBugs" />
   <div>
-    <button data-phocus-action="showEnhancements"></button>
-    <button data-phocus-action="edit"><i class="pencil-icon" /></button>
+    <PhocusButton action="showEnhancements" />
+    <PhocusButton action="edit"><i class="pencil-icon" /></PhocusButton>
   </div>
 </div>
 ```
 
 ### Start your engines
 
-Finally, use `startPhocus` to get thins started.
+Finally, use `startPhocus` to get things started.
 
 ```
 import { startPhocus } from "phocus";
@@ -125,9 +102,8 @@ startPhocus(document.body);
 
 Contexts can be nested, and are transparent; if a child context does not shadow a parent's hotkey, then that hotkey will work even when the child is focused. A context marked `opaque: true` will shadow all actions in its parent.
 
-Elements with `data-phocus-action` will be giving appropriate aria-labels, and if they contain no inner text, will be filled in with the actions 'name'.
+`PhocusButton`s will be giving appropriate aria-labels, and if they contain no children, will be filled in with the actions 'name'.
 
-Phocus is always watching for changes, so you can use it alongside any frontend framework.
 
 ### Constraining Focus
 
@@ -147,6 +123,8 @@ As the names suggest, there is a stack of constraints; you can push consecutive 
 
 ### Hotkey remapping
 
+Hotkey mapping works exactly as in Phocus.
+
 `ActionContextService.currentRemapping` is a JSON object representing the current mapping of hotkeys to actions. If you store this for a user, either in localstorage or on a server, then on subsequent visits, you can use `ActionContextService.restoreRemapping(mapping)` which takes that JSON object and restores the mapping it represents.
 
 `remapAction(action: Action, newMapping)` takes an Action object and a key string (such as "Control+a") and customizes that action with that hotkey.
@@ -158,6 +136,8 @@ As the names suggest, there is a stack of constraints; you can push consecutive 
 All three remapping functions are temporary without using `currentRemapping` and `restoreRemapping` to carry the effects across sessions.
 
 ### Other useful functions
+
+These all work exactly as in Phocus.
 
 `stopPhocus(element)` removes all Phocus' event watchers from the dom.
 
@@ -171,8 +151,8 @@ All three remapping functions are temporary without using `currentRemapping` and
 
 ### Contributing
 
-Phocus is, first and foremost, a tool I use for building products myself. I probably won't accept changes that make it less effective for me, personally.
+react-phocus is, first and foremost, a tool I use for building products myself. I probably won't accept changes that make it less effective for me, personally.
 
-However, if you like Phocus, and want to contribute, feel free to reach out, and I'll add you to the [Vistimo](https://www.vistimo.com) project that tracks Phocus' progress. 
+However, if you like react-phocus, and want to contribute, feel free to reach out, and I'll add you to the [Vistimo](https://www.vistimo.com) project that tracks Phocus' progress. 
 
 Github issues are, if not welcome, accepted, and will be read eventually.
