@@ -6,6 +6,7 @@ export interface PhocusButtonProps {
   style?: React.CSSProperties;
   autofocus?: boolean;
   disabled?: boolean;
+  phocusId?: string;
   "aria-label"?: string;
   "aria-labelledby"?: string;
   "aria-haspopup"?: boolean;
@@ -14,9 +15,9 @@ export interface PhocusButtonProps {
 }
 
 export function PhocusButton(props: PhocusButtonProps) {
-  let { action, children, ...bprops } = props;
+  let { action, children, phocusId, ...bprops } = props;
   return (
-    <button data-phocus-action={action} {...bprops}>
+    <button data-phocus-action={action} data-phocus-id={phocusId} {...bprops}>
       {children}
     </button>
   );

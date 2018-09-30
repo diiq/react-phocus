@@ -9,5 +9,6 @@ export {
   Key,
   Hotkey,
   ConstrainFocusService,
-  startPhocus
+  startPhocus,
+  focusInContext
 } from "phocus";
