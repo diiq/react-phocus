@@ -11,8 +11,8 @@ export class Action extends PhocusAction {
 
   constructor(description: {
     name: string;
-    shortDocumentation: string;
-    searchTerms: string[];
+    shortDocumentation?: string;
+    searchTerms?: string[];
     actOn: (argument: any, element?: HTMLElement, e?: ActionEvent) => void;
     defaultKeys: Key[];
     hidden?: boolean;

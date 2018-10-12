@@ -30,7 +30,7 @@ An action context is a set of actions which are available only when focus is wit
 import {
   Action,
   ActionContextService,
-} from "phocus";
+} from "react-phocus";
 
 // Wherever you like, but ideally on startup, define some contexts:
 ActionContextService.addContext("feature-thumbnail", {
@@ -41,7 +41,6 @@ ActionContextService.addContext("feature-thumbnail", {
     showBugs: new Action({
       name: "Show bugs",
       shortDocumentation: "Show a list of bugs filed against this feature",
-      searchTerms: [],
       actOn: (id) => {
         let feature = getFeature(id);
         feature.showBugs();
@@ -51,7 +50,6 @@ ActionContextService.addContext("feature-thumbnail", {
     showEnhancements: new Action({
       name: "Show enhancements",
       shortDocumentation: "Show a list of enhancements planned for this feature",
-      searchTerms: [],
       actOn: (id) => {
         let feature = getFeature(id);
         feature.showEnhancements();
@@ -61,7 +59,6 @@ ActionContextService.addContext("feature-thumbnail", {
     edit: new Action({
       name: "Edit",
       shortDocumentation: "Edit the feature's name or other properties without leaving the feature map.",
-      searchTerms: ["edit"],
       actOn: (id, element, event) => {
         // You also get a reference to the context element,
         // and to the triggering event.
@@ -92,7 +89,8 @@ Rather than using the `data-phocus-` attributes to connect contexts and actions 
 Finally, use `startPhocus` to get things started.
 
 ```
-import { startPhocus } from "phocus";
+import { startPhocus } from "react-phocus";
+import "react-phocus/dist/react-phocus.css"; // Only if you want the default CSS for phocus-modal and with-command-palette.
 
 // Starting Phocus before your initial page load can slow down
 // load times. It's recommended to wait until the initial
@@ -121,9 +119,26 @@ ConstrainFocusService.popConstraint();
 
 As the names suggest, there is a stack of constraints; you can push consecutive constraints, and pop them one by one.
 
+### PhocusModal
+
+Speaking of modals, react-phocus provides an a11y-attentive modal that interacts well with phocus. 
+
+```
+{this.state.modalOpen && <PhocusModal close={() => this.setState({modalOpen: false})}>
+  This is a modal!
+</PhocusModal>}
+```
+
+Focus is constrained to the modal, screenreading is constrained to the modal, clicking away will close, hitting escape will close.
+
+### WithCommandPalette
+
+Phocus provides an interface for listing, manipulating, and rebinding the available hotkeys and actions. React-phocus provides a default interface for that. Wrap your app in a `<WithCommandPalette>` component, and press `Control+Shift+P` to see a searchable list of actions. Click on any of the keybindings (or hit 'e'!) to rebind or unbind them.
+
+
 ### Hotkey remapping
 
-Hotkey mapping works exactly as in Phocus.
+If you'd rather not use the provided `WithCommandPalette` component, hotkey mapping works exactly as in Phocus.
 
 `ActionContextService.currentRemapping` is a JSON object representing the current mapping of hotkeys to actions. If you store this for a user, either in localstorage or on a server, then on subsequent visits, you can use `ActionContextService.restoreRemapping(mapping)` which takes that JSON object and restores the mapping it represents.
 

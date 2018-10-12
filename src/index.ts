@@ -12,3 +12,5 @@ export {
   startPhocus,
   focusInContext
 } from "phocus";
+export { WithCommandPalette } from "./command-palette/with-command-palette";
+export { PhocusModal } from "./phocus-modal/phocus-modal";

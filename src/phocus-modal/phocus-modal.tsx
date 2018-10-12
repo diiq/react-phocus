@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import "./modal.css";
 import { ActionContextService, ConstrainFocusService } from "phocus";
 import { Action } from "../action/action";
 import { PhocusContext } from "../phocus-context/phocus-context";
@@ -57,10 +56,10 @@ export class PhocusModal extends React.Component<PhocusButtonProps> {
       <PhocusContext
         context="modal"
         argument={this}
-        className="modal-container"
+        className="phocus-modal--container"
       >
         {this.props.children}
-        <PhocusButton action="closeModal" className="modal-background">
+        <PhocusButton action="closeModal" className="phocus-modal--background">
           <span />
         </PhocusButton>
       </PhocusContext>,

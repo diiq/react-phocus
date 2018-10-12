@@ -1,0 +1,172 @@
+/* Phocus modal */
+
+.phocus-modal--container {
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.phocus-modal--background {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-appearance: none;
+}
+
+/* Command palette */
+
+.phocus-command-palette {
+  box-sizing: border-box;
+  width: 500px;
+  max-width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, 0);
+  background-color: #fff;
+  font-size: 16px;
+  border: 1px solid #888;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.phocus-command-palette input {
+  box-sizing: border-box;
+  display: block;
+  padding: 6px 8px;
+  margin: 4px;
+  border-radius: 0;
+  width: calc(100% - 8px);
+  border: none;
+  box-shadow: 2px 2px 2px inset rgba(0, 0, 0, 0.3);
+  border: 1px solid #eee;
+}
+
+/* Command palette action */
+
+.phocus-command-palette-action {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 8px 10px 12px;
+  border: none;
+  text-align: left;
+  font: inherit;
+}
+.phocus-command-palette-action:focus {
+  outline: none;
+}
+
+.phocus-command-palette input:focus + div .phocus-command-palette-action,
+.phocus-command-palette-action:focus {
+  background-color: #eee;
+}
+
+.phocus-command-palette-action .phocus-command-palette-action--name {
+  font-weight: bold;
+  min-width: 80px;
+  align-self: center;
+}
+
+.phocus-command-palette-action .phocus-command-palette-action--description {
+  color: #888;
+  flex: 1;
+  margin: 0 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  white-space: nowrap;
+  align-self: center;
+}
+
+.phocus-command-palette-action .phocus-command-palette-action--key-command {
+  border: 0;
+  background: transparent;
+  display: block;
+  padding: 0;
+  margin: 0;
+  align-self: center;
+  font: inherit;
+  font-size: 14px;
+}
+.phocus-command-palette-action
+  .phocus-command-palette-action--key-command:hover
+  .phocus-key-command--key {
+  background-color: #acf;
+}
+
+/* Key command */
+.phocus-key-command .phocus-key-command--key {
+  color: #000;
+  background-color: #bdf;
+  border-radius: 3px;
+  padding: 2px 5px;
+  font-size: 14px;
+  align-self: center;
+}
+
+/* Keybinding-modal */
+.phocus-keybinding-modal {
+  box-sizing: border-box;
+  padding: 20px;
+  max-width: 100%;
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, 0);
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.phocus-keybinding-modal .phocus-keybinding-modal--binding {
+  text-align: center;
+  margin: 12px 0 24px;
+  font-size: 20px;
+}
+.phocus-keybinding-modal
+  .phocus-keybinding-modal--binding
+  .phocus-key-command--key {
+  font-size: 20px;
+}
+
+.phocus-keybinding-modal .phocus-keybinding-modal--binding .phocus-key-command {
+  margin: 0 6px;
+}
+
+.phocus-keybinding-modal .phocus-keybinding-modal--actions {
+  display: flex;
+}
+
+.phocus-keybinding-modal button {
+  flex: 1;
+  margin: 0 3px;
+  font: inherit;
+  border: 0;
+  padding: 6px 12px;
+  white-space: nowrap;
+  background-color: #40627e;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.phocus-keybinding-modal input {
+  padding: 6px 8px;
+  margin: 0 6px;
+  border-radius: 0;
+  border: none;
+  box-shadow: 2px 2px 2px inset rgba(0, 0, 0, 0.3);
+  border: 1px solid #eee;
+}
