@@ -21,8 +21,7 @@ class Match<T> {
     const regex = new RegExp(`(.*?)(${search.split("").map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join(")(.*?)(")})(.*)`);
     let matches = Array.from(list).map(item => new Match(item, key, regex));
     matches = matches.filter(m => m.matched);
-    matches.sort((a, b) => (a.score() < b.score() ? -1 : 1));
-    matches = matches.reverse();
+    matches.sort((a, b) => b.score() - a.score());
     return matches.map(m => m.value);
   }
 
