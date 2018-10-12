@@ -27,7 +27,6 @@ ActionContextService.addContext("command-palette-action", {
           e.stopPropagation();
           e.preventDefault();
         }
-        console.log("THIS IS HAPEN")
         c.editHotkey();
       },
       defaultKeys: ["e"]
