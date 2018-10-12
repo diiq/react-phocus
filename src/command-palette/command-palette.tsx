@@ -48,6 +48,7 @@ export class CommandPalette extends React.Component {
         argument={this}
         className="phocus-command-palette"
       >
+        <div className="phocus-command-palette--hint">Hint: try opening this command palette while different things are focused.</div>
         <input
           onChange={e => this.setState({ search: e.target.value })}
           value={this.state.search}

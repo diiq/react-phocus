@@ -18,9 +18,12 @@ export class Action extends PhocusAction {
     hidden?: boolean;
   }) {
     const {actOn, ...desc} = description;
-    const wrappedActOn = (_: any, element: HTMLElement, event?: ActionEvent) => {
-      const component: PhocusContext = componentForElement(element);
-      this.unwrappedActOn(component.props.argument, element, event);
+    const wrappedActOn = (arg: any, element?: HTMLElement, event?: ActionEvent) => {
+      if (element) {
+        const component: PhocusContext = componentForElement(element);
+        arg = component.props.argument
+      }
+      this.unwrappedActOn(arg, element, event);
     };
     super({...desc, actOn: wrappedActOn});
     this.unwrappedActOn = actOn;

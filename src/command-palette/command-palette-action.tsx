@@ -10,7 +10,7 @@ import { KeyCommand } from "./key-command";
 
 ActionContextService.addContext("command-palette-action", {
   actions: {
-    doit: new Action({
+    takeAction: new Action({
       name: "Take this action",
       shortDocumentation: "Take the action",
       actOn: (c, _, e) => {
@@ -27,6 +27,7 @@ ActionContextService.addContext("command-palette-action", {
           e.stopPropagation();
           e.preventDefault();
         }
+        console.log("THIS IS HAPEN")
         c.editHotkey();
       },
       defaultKeys: ["e"]
@@ -76,7 +77,8 @@ export class CommandPaletteAction extends React.Component<
           data-phocus-id={`action-${this.props.id}`}
           data-phocus-on-mouseover
           data-phocus-do-not-label
-          data-phocus-action="doit"
+          data-phocus-action="takeAction"
+          role="button"
         >
           <div className="phocus-command-palette-action--name">{this.props.action.action.name}</div>
           <div className="phocus-command-palette-action--description">

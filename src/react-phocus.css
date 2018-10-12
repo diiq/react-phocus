@@ -53,6 +53,17 @@
   border: 1px solid #eee;
 }
 
+.phocus-command-palette--hint {
+  position: absolute;
+  box-sizing: border-box;
+  bottom: -36px;
+  font-size: 14px;
+  color: #fff;
+  background-color: rgba(0,0,0,.4);
+  width: 100%;
+  padding: 6px 12px;
+}
+
 /* Command palette action */
 
 .phocus-command-palette-action {
@@ -63,6 +74,7 @@
   border: none;
   text-align: left;
   font: inherit;
+  cursor: pointer;
 }
 .phocus-command-palette-action:focus {
   outline: none;

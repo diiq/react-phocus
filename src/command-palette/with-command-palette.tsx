@@ -1,8 +1,6 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { ActionContextService } from "phocus";
 import { Action } from "../action/action";
-import { PhocusContext } from "../phocus-context/phocus-context";
 import { PhocusModal } from "../phocus-modal/phocus-modal";
 import { CommandPalette } from "./command-palette";
 
@@ -32,23 +30,23 @@ export class WithCommandPalette extends React.Component {
   };
 
   componentDidMount() {
-    ActionContextService.setContext(ReactDOM.findDOMNode(this) as HTMLElement);
+    ActionContextService.addDefaultContext("with-command-palette", this);
+  }
+
+  componentDidUnMount() {
+    ActionContextService.removeDefaultContext("with-command-palette", this);
   }
 
   render() {
     return (
-      <PhocusContext
-        context="with-command-palette"
-        argument={this}
-        className="phocus-with-command-palette"
-      >
+      <div className="phocus-with-command-palette">
         {this.props.children}
         {this.state.paletteOpen && (
           <PhocusModal close={this.hidePalette}>
             <CommandPalette />
           </PhocusModal>
         )}
-      </PhocusContext>
+      </div>
     );
   }
 }
