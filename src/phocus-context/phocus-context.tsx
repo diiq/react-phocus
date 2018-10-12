@@ -8,7 +8,6 @@ export interface PhocusButtonProps {
   "aria-label"?: string;
   "aria-labelledby"?: string;
   role?: string;
-  children?: React.ReactChildren;
   tag?: string;
   tabIndex?: number;
 }
