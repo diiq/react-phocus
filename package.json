@@ -1,6 +1,6 @@
 {
   "name": "react-phocus",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "A wrapper for using Phocus with react.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,22 +30,22 @@
   },
   "homepage": "https://github.com/diiq/react-phocus#readme",
   "dependencies": {
-    "phocus": "1.4.0"
+    "phocus": "^1.4.1"
   },
   "peerDependencies": {
     "react": "^16.5.0",
     "react-dom": "^16.5.0"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.2",
+    "@types/jest": "^23.3.10",
     "@types/jsdom": "^11.12.0",
-    "@types/react": "^16",
-    "@types/react-dom": "^16",
+    "@types/react": "^16.7.11",
+    "@types/react-dom": "^16.0.11",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
     "mutationobserver-shim": "^0.3.2",
-    "ts-jest": "^23.10.1",
-    "typescript": "^3.0.3",
-    "react": "^16"
+    "react": "^16.6.3",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.1"
   }
 }
