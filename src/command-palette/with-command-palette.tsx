@@ -8,7 +8,7 @@ ActionContextService.addContext("with-command-palette", {
   actions: {
     showPalette: new Action({
       name: "Command palette",
-      defaultKeys: ["Control+Shift+P", "Shift+Meta+P", "Control+Shift+?"],
+      defaultKeys: ["Control+Shift+?", "Shift+Meta+P", "Control+Shift+P"],
       actOn: component => {
         component.showPalette();
       }

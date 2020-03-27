@@ -111,6 +111,7 @@
   align-self: center;
   font: inherit;
   font-size: 14px;
+  color: #000;
 }
 .phocus-command-palette-action
   .phocus-command-palette-action--key-command:hover

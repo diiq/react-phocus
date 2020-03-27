@@ -78,6 +78,7 @@ export class CommandPaletteAction extends React.Component<
           data-phocus-do-not-label
           data-phocus-action="takeAction"
           role="button"
+          tabIndex={0}
         >
           <div className="phocus-command-palette-action--name">{this.props.action.action.name}</div>
           <div className="phocus-command-palette-action--description">
